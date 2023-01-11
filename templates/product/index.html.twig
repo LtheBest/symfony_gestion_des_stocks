@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ccc;
+}
+table{
+    margin: 150px auto;
+    width: 80%;
+}
+</style>
+<table border="1">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.description }}</td> 
+                <td>
+                    <a href="{{ path('app_product_edit', {'id': product.id}) }}" class="btn btn-success">Editer</a>
+                    <a href="{{ path('app_product_delete', {'id': product.id}) }}" class="btn btn-primary">Supprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+            <td>
+                <a href="{{ path('app_product_add') }}" class="btn btn-success">ajout</a>
+            </td> 
+        </tbody>
+    </table>
+{% endblock %}

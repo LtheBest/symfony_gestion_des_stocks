@@ -1,0 +1,43 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ccc;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #ccc;
+}
+table{
+    margin: 150px auto;
+    width: 80%;
+}
+</style>
+{{ form_start(form) }}
+<table border="1">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ form_row(form.name) }}</td>
+                <td>{{ form_row(form.description) }}</td>
+                <td>{{ form_row(form.price) }}</td>
+                <td><button class="btn btn-success" type="submit">Ajouter</button></td>
+            </tr>
+        </tbody>
+    </table>
+{{ form_end(form) }}
+{% endblock %}
